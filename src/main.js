@@ -8,6 +8,12 @@ const game = new Phaser.Game({
     render: {
         pixelArt: true
     },
+    physics: {
+        default: "arcade",
+        arcade: {
+            tileBias: 48
+        }
+    },
     scale: {
         mode: Phaser.Scale.ScaleModes.FIT,
         autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
