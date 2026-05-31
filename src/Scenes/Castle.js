@@ -28,6 +28,11 @@ class Castle extends Phaser.Scene {
         for (const layer of this.map.layers) {
             this.map.createLayer(layer.name, "spritesheet_maps")
         }
+
+        //create characters
+        //TODO: Create enemy sprites
+        this.player = new Player(this, 0, 0, "sprite_player");
+        console.log(this.player);
     }
 
     update() {
