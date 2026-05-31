@@ -1,0 +1,45 @@
+{
+    "activeFile": "Castle.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "Castle.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 779,
+                "y": 654
+            }
+        },
+        "Castle.tmx#spritesheet_maps": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Eisig Liang/Desktop/School/CMPM 120/InAnotherWorldWithMyM1911/assets/Maps",
+    "last.imagePath": "C:/Users/Eisig Liang/Desktop/School/CMPM 120/InAnotherWorldWithMyM1911/assets/Maps",
+    "map.height": 96,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 128,
+    "openFiles": [
+        "Castle.tmx"
+    ],
+    "project": "InAnotherWorldWithMyM1911.tiled-project",
+    "recentFiles": [
+        "Castle.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.margin": 0,
+    "tileset.spacing": 1,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
