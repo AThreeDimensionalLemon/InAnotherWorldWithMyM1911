@@ -4,15 +4,25 @@ class Castle extends Phaser.Scene {
     }
 
     init() {
-        
+
     }
 
     preload() {
 
+        //queue to-be-loaded map assets
+        this.load.setPath("./assets/Maps/");
+        this.load.image("spritesheet_maps");
+        this.load.tilemapTiledJSON("tilemapJson_Castle", "Castle.json");
     }
 
     create() {
 
+        //create map
+        this.map = this.add.tilemap("tilemapJson_Castle");
+        this.map.addTilesetImage("spritesheet_maps");
+        for (const layer of this.map.layers) {
+            this.map.createLayer(layer.name, "spritesheet_maps")
+        }
     }
 
     update() {
