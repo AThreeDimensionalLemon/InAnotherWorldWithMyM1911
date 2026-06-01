@@ -4,7 +4,15 @@ class Castle extends Phaser.Scene {
     }
 
     init() {
-        this.collidables = [];
+        this.map = {
+            tilemap: null,
+            layers: {
+                collidable1: null,
+                collidable2: null,
+                decoration1: null,
+                decoration2: null
+            }
+        }
     }
 
     preload() {
@@ -23,85 +31,30 @@ class Castle extends Phaser.Scene {
     create() {
 
         //create map
-        this.map = this.add.tilemap("tilemapJson_Castle");
-        this.map.addTilesetImage("spritesheet_maps");
-        for (let layer of this.map.layers) {
-            layer = this.map.createLayer(layer.name, "spritesheet_maps");
-            layer.forEachTile((tile) => {
-                if (tile.properties.isCollidable == true) {
-                    tile.getCustomPhysicsCenter = function() {
-                        return { //getCenter methods return another function; manually calculate the center
-                            x: this.pixelX + this.width / 2,
-                            y: this.pixelY + this.height / 2
-                        };
-                    };
-                    this.collidables.push(tile);
-                }
-            });
+        this.map.tilemap = this.add.tilemap("tilemapJson_Castle");
+        this.map.tilemap.addTilesetImage("spritesheet_maps");
+        for (const layer of this.map.tilemap.layers) {
+            this.map.layers[layer.name] = this.map.tilemap.createLayer(layer.name, "spritesheet_maps");
+            if (layer.name.includes("collidable")) this.map.layers[layer.name].setCollisionByProperty({ collides: true });
         }
 
         //create characters
+        //TODO: Figure out how to use the constructor of a sprite with a dynamic body and move it into Player
         //TODO: Create enemy sprites
-        this.player = new Player(this, 512, 640, "sprite_player");
-        this.collidables.push(this.player);
+        this.player = new Player(this.physics.add.sprite(512, 640, "sprite_player"));
 
-        //cleanup physics
-        this.collidables = mergeSort(this.collidables);
+        //setup collisions
+        for (const layer in this.map.layers) {
+            // console.log(this.map.layers[layer]);
+            console.log(this.physics.add.collider(this.player.sprite.body, this.map.layers[layer]));
+        }
 
         //setup camera
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-        this.cameras.main.startFollow(this.player, true, 0.25, 0.25);
+        this.cameras.main.startFollow(this.player.sprite, true, 0.25, 0.25);
     }
 
     update(time, delta) {
         this.player.update(time, delta);
-        this.collidables = mergeSort(this.collidables);
     }
-}
-
-function mergeSort(arr) {
-    if (arr.length <= 1) {
-        return arr;
-    }
-
-    const mid = Math.floor(arr.length / 2);
-
-    const left = mergeSort(arr.slice(0, mid));
-    const right = mergeSort(arr.slice(mid));
-
-    return merge(left, right);
-}
-
-function getHypotenuse(a, b) {
-    return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-}
-
-function merge(left, right) {
-    const result = [];
-    let i = 0;
-    let j = 0;
-
-    while (i < left.length && j < right.length) {
-        const leftDistance = getHypotenuse(left[i].getCustomPhysicsCenter().x, left[i].getCustomPhysicsCenter().y);
-        const rightDistance = getHypotenuse(right[j].getCustomPhysicsCenter().x, right[j].getCustomPhysicsCenter().y);
-        if (leftDistance <= rightDistance) {
-            result.push(left[i]);
-            i++;
-        } else {
-            result.push(right[j]);
-            j++;
-        }
-    }
-
-    while (i < left.length) {
-        result.push(left[i]);
-        i++;
-    }
-
-    while (j < right.length) {
-        result.push(right[j]);
-        j++;
-    }
-
-    return result;
 }

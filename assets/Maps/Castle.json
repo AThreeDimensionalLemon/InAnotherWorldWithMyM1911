@@ -261,7 +261,7 @@
                  "id":1228,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -270,7 +270,7 @@
                  "id":1229,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -279,7 +279,7 @@
                  "id":1230,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -288,7 +288,7 @@
                  "id":1285,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -297,7 +297,7 @@
                  "id":1286,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -306,7 +306,7 @@
                  "id":1287,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -315,7 +315,7 @@
                  "id":1342,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -324,7 +324,7 @@
                  "id":1343,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -333,7 +333,7 @@
                  "id":1344,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
@@ -342,7 +342,7 @@
                  "id":1400,
                  "properties":[
                         {
-                         "name":"isCollidable",
+                         "name":"collides",
                          "type":"bool",
                          "value":true
                         }]
