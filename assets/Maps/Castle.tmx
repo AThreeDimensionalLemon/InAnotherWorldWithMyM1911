@@ -7,52 +7,52 @@
   <image source="spritesheet_maps.png" width="968" height="526"/>
   <tile id="1228">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1229">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1230">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1285">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1286">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1287">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1342">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1343">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1344">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="1400">
    <properties>
-    <property name="collides" type="bool" value="true"/>
+    <property name="isCollidable" type="bool" value="true"/>
    </properties>
   </tile>
  </tileset>
