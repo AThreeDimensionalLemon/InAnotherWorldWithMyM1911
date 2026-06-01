@@ -6,17 +6,18 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this); //beginning to see why Quincy calls Phaser "inconsistently low-level"
         scene.physics.add.existing(this);
 
-        //configs
+        //read configs
         //TODO: Make this object read from a JSON
         this.configs = {
             moveSpeed: 75,
             maxShootCooldown: 500
         }
 
-        //architecture
+        //setup architecture
         this.inputs = scene.input.keyboard.addKeys("W,A,S,D,UP,LEFT,RIGHT,DOWN");
     }
 
+    //returns direction of action for moving and shooting
     GetDirection(left, right, up, down) {
         const xSum = Number(right) - Number(left);
         const ySum = Number(down) - Number(up);
