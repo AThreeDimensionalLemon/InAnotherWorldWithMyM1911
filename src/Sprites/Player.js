@@ -1,7 +1,6 @@
 //TODO: Make this class extend a sprite with a physics body
 class Player {
     constructor(inSprite) {
-        this.sprite = inSprite;
 
         //configs
         //TODO: Make this object read from a JSON
@@ -11,17 +10,18 @@ class Player {
         }
 
         //architecture
-        this.inputs = this.sprite.scene.input.keyboard.addKeys("W,A,S,D,UP,LEFT,RIGHT,DOWN");
+        this.sprite = inSprite;
+        this.inputs = inSprite.scene.input.keyboard.addKeys("W,A,S,D,UP,LEFT,RIGHT,DOWN");
     }
 
     GetDirection(left, right, up, down) {
         const xSum = Number(right) - Number(left);
         const ySum = Number(down) - Number(up);
-        if (left != right && up != down) return { //going diagonal
+        if (xSum != 0 && ySum != 0) return { //moving in two axes; do diagonal correction
             x: xSum / Math.sqrt(2),
             y: ySum / Math.sqrt(2)
         };
-        else return { //going straight
+        else return {
             x: xSum,
             y: ySum
         };
@@ -30,10 +30,10 @@ class Player {
 
     update(time, delta) {
 
-        //poll inputs
+        //poll and handle inputs
         const moveDirection = this.GetDirection(this.inputs.A.isDown, this.inputs.D.isDown, this.inputs.W.isDown, this.inputs.S.isDown);
         this.sprite.body.setVelocityX(moveDirection.x * this.configs.moveSpeed);
         this.sprite.body.setVelocityY(moveDirection.y * this.configs.moveSpeed);
-        console.log(this.sprite.body.velocity);
+        const fireDirection = this.GetDirection(this.inputs.LEFT.isDown, this.inputs.RIGHT.isDown, this.inputs.UP.isDown, this.inputs.DOWN.isDown);
     }
 }
