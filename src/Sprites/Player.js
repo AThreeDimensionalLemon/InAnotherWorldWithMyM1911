@@ -1,6 +1,10 @@
-//TODO: Make this class extend a sprite with a physics body
-class Player {
-    constructor(inSprite) {
+class Player extends Phaser.Physics.Arcade.Sprite {
+    constructor(scene, x, y, texture) {
+
+        //setup parent class
+        super(scene, x, y, texture);
+        scene.add.existing(this); //beginning to see why Quincy calls Phaser "inconsistently low-level"
+        scene.physics.add.existing(this);
 
         //configs
         //TODO: Make this object read from a JSON
@@ -10,8 +14,7 @@ class Player {
         }
 
         //architecture
-        this.sprite = inSprite;
-        this.inputs = inSprite.scene.input.keyboard.addKeys("W,A,S,D,UP,LEFT,RIGHT,DOWN");
+        this.inputs = scene.input.keyboard.addKeys("W,A,S,D,UP,LEFT,RIGHT,DOWN");
     }
 
     GetDirection(left, right, up, down) {
@@ -31,8 +34,8 @@ class Player {
 
         //poll and handle inputs
         const moveDirection = this.GetDirection(this.inputs.A.isDown, this.inputs.D.isDown, this.inputs.W.isDown, this.inputs.S.isDown);
-        this.sprite.body.setVelocityX(moveDirection.x * this.configs.moveSpeed);
-        this.sprite.body.setVelocityY(moveDirection.y * this.configs.moveSpeed);
+        this.body.setVelocityX(moveDirection.x * this.configs.moveSpeed);
+        this.body.setVelocityY(moveDirection.y * this.configs.moveSpeed);
         const fireDirection = this.GetDirection(this.inputs.LEFT.isDown, this.inputs.RIGHT.isDown, this.inputs.UP.isDown, this.inputs.DOWN.isDown);
     }
 }

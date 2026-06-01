@@ -39,19 +39,18 @@ class Castle extends Phaser.Scene {
         }
 
         //create characters
-        //TODO: Figure out how to use the constructor of a sprite with a dynamic body and move it into Player
         //TODO: Create enemy sprites
-        this.player = new Player(this.physics.add.sprite(512, 640, "sprite_player"));
+        this.player = new Player(this, 512, 640, "sprite_player");
+        // console.log(this.player);
 
         //setup collisions
         for (const layer in this.map.layers) {
-            // console.log(this.map.layers[layer]);
-            console.log(this.physics.add.collider(this.player.sprite.body, this.map.layers[layer]));
+            this.physics.add.collider(this.player, this.map.layers[layer]);
         }
 
         //setup camera
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-        this.cameras.main.startFollow(this.player.sprite, true, 0.25, 0.25);
+        this.cameras.main.startFollow(this.player, true, 0.25, 0.25);
     }
 
     update(time, delta) {
