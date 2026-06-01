@@ -32,6 +32,7 @@
         "Castle.tmx"
     ],
     "project": "InAnotherWorldWithMyM1911.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
         "Castle.tmx"
     ],

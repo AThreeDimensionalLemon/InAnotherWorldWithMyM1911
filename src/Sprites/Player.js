@@ -25,7 +25,6 @@ class Player {
             x: xSum,
             y: ySum
         };
-        
     }
 
     update(time, delta) {

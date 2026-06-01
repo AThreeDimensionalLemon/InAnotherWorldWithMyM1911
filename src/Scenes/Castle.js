@@ -4,7 +4,15 @@ class Castle extends Phaser.Scene {
     }
 
     init() {
-
+        this.map = {
+            tilemap: null,
+            layers: {
+                collidable1: null,
+                collidable2: null,
+                decoration1: null,
+                decoration2: null
+            }
+        }
     }
 
     preload() {
@@ -23,16 +31,23 @@ class Castle extends Phaser.Scene {
     create() {
 
         //create map
-        this.map = this.add.tilemap("tilemapJson_Castle");
-        this.map.addTilesetImage("spritesheet_maps");
-        for (const layer of this.map.layers) {
-            this.map.createLayer(layer.name, "spritesheet_maps")
+        this.map.tilemap = this.add.tilemap("tilemapJson_Castle");
+        this.map.tilemap.addTilesetImage("spritesheet_maps");
+        for (const layer of this.map.tilemap.layers) {
+            this.map.layers[layer.name] = this.map.tilemap.createLayer(layer.name, "spritesheet_maps");
+            if (layer.name.includes("collidable")) this.map.layers[layer.name].setCollisionByProperty({ collides: true });
         }
 
         //create characters
-        //TODO: Figure out how to use a constructor of a sprite with a dynamic body
+        //TODO: Figure out how to use the constructor of a sprite with a dynamic body and move it into Player
         //TODO: Create enemy sprites
         this.player = new Player(this.physics.add.sprite(512, 640, "sprite_player"));
+
+        //setup collisions
+        for (const layer in this.map.layers) {
+            // console.log(this.map.layers[layer]);
+            console.log(this.physics.add.collider(this.player.sprite.body, this.map.layers[layer]));
+        }
 
         //setup camera
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
