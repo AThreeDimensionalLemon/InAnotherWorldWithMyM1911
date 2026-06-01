@@ -11,7 +11,6 @@ const game = new Phaser.Game({
     physics: {
         default: "arcade",
         arcade: {
-            tileBias: 48
         }
     },
     scale: {
