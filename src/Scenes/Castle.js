@@ -31,11 +31,10 @@ class Castle extends Phaser.Scene {
 
         //create characters
         //TODO: Create enemy sprites
-        this.player = new Player(this, 0, 0, "sprite_player");
-        console.log(this.player);
+        this.player = new Player(this.physics.add.sprite(0, 0, "sprite_player"));
     }
 
-    update() {
-
+    update(time, delta) {
+        this.player.update(time, delta);
     }
 }

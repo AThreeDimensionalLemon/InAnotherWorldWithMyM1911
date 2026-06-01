@@ -1,8 +1,8 @@
 "use strict"
 
 const game = new Phaser.Game({
-    width: 240,
-    height: 150,
+    width: 512,
+    height: 320,
     type: Phaser.CANVAS,
     parent: 'phaser-game',
     render: {
