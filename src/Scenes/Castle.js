@@ -3,6 +3,12 @@ class Castle extends Phaser.Scene {
         super("Castle");
     }
 
+    addColliderWithMap(object, callback) {
+        for (const layer in this.map.layers) {
+            if (layer.includes("collidable")) this.physics.add.collider(object, this.map.layers[layer], callback);
+        }
+    }
+
     init() {
         this.map = {
             tilemap: null,
@@ -42,12 +48,10 @@ class Castle extends Phaser.Scene {
         //create moving elements
         this.enemyGroup = new EnemyGroup(this);
         this.player = new Player(this, 512, 640);
-        this.bulletGroup = new BulletGroup(this);
+        this.bulletGroup = new BulletGroup(this, this.enemyGroup);
 
         //setup collisions
-        for (const layer in this.map.layers) {
-            if (layer.includes("collidable")) this.physics.add.collider(this.player, this.map.layers[layer]);
-        }
+        this.addColliderWithMap(this.player);
 
         //setup camera
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
@@ -55,6 +59,7 @@ class Castle extends Phaser.Scene {
     }
 
     update(time, delta) {
+        this.enemyGroup.update(time);
         this.player.update(delta, this.bulletGroup);
     }
 }

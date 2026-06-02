@@ -36,6 +36,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     update(delta, bulletGroup) {
 
+        //update variables
+        if (this.shootCooldown > 0) this.shootCooldown -= delta;
+
         //poll and handle inputs
         const moveDirection = this.GetDirection(this.inputs.A.isDown, this.inputs.D.isDown, this.inputs.W.isDown, this.inputs.S.isDown);
         this.body.setVelocityX(moveDirection.x * this.configs.moveSpeed);
@@ -46,8 +49,5 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             const bullet = bulletGroup.get(this.x, this.y, "sprite_bullet");
             bullet.start(fireDirection.x, fireDirection.y);
         }
-
-        //update variables
-        if (this.shootCooldown > 0) this.shootCooldown -= delta;
     }
 }
