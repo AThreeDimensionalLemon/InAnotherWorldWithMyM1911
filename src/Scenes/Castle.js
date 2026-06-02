@@ -40,7 +40,7 @@ class Castle extends Phaser.Scene {
         }
 
         //create moving elements
-        //TODO: Create enemy sprites
+        this.enemyGroup = new EnemyGroup(this);
         this.player = new Player(this, 512, 640);
         this.bulletGroup = new BulletGroup(this);
 
