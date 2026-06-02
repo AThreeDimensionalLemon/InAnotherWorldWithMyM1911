@@ -1,13 +1,20 @@
-class Bullet {
-    constructor(inSprite) {
+class Bullet extends Phaser.Physics.Arcade.Sprite {
+    constructor(scene, x, y, texture) {
 
-        //configs
+        //setup parent class
+        super(scene, x, y, texture);
+        scene.add.existing(this);
+        scene.physics.add.existing(this);
+
+        //read configs
         //TODO: Make this object read from a JSON
         this.configs = {
-            moveSpeed: 75
+            moveSpeed: 150
         }
+    }
 
-        //architecture
-        this.sprite = inSprite;
+    start(xDirection, yDirection) {
+        this.setRotation(Math.atan(xDirection / yDirection)); //TODO: Fix this facing the wrong direction when going diagonal
+        this.body.setVelocity(xDirection * this.configs.moveSpeed, yDirection * this.configs.moveSpeed);
     }
 }

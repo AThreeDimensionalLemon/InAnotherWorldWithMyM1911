@@ -26,6 +26,7 @@ class Castle extends Phaser.Scene {
         this.load.setPath("./assets/Characters/");
         this.load.image("sprite_enemy");
         this.load.image("sprite_player");
+        this.load.image("sprite_bullet");
     }
 
     create() {
@@ -38,9 +39,10 @@ class Castle extends Phaser.Scene {
             if (layer.name.includes("collidable")) this.map.layers[layer.name].setCollisionByProperty({ collides: true });
         }
 
-        //create characters
+        //create moving elements
         //TODO: Create enemy sprites
-        this.player = new Player(this, 512, 640, "sprite_player");
+        this.player = new Player(this, 512, 640);
+        this.bulletGroup = new BulletGroup(this);
 
         //setup collisions
         for (const layer in this.map.layers) {
@@ -53,6 +55,6 @@ class Castle extends Phaser.Scene {
     }
 
     update(time, delta) {
-        this.player.update(time, delta);
+        this.player.update(delta, this.bulletGroup);
     }
 }
