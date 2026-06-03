@@ -8,16 +8,16 @@
             "scaleInEditor": 2
         },
         "Castle.tmx": {
-            "scale": 2,
-            "selectedLayer": 3,
+            "scale": 0.75,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 347.25,
-                "y": 404
+                "x": 486,
+                "y": 381.3333333333333
             }
         },
         "Castle.tmx#spritesheet_maps": {
             "scaleInDock": 1.5,
-            "scaleInEditor": 1
+            "scaleInEditor": 2
         }
     },
     "last.exportedFilePath": "C:/Users/Eisig Liang/Desktop/School/CMPM 120/InAnotherWorldWithMyM1911/assets/Maps",
