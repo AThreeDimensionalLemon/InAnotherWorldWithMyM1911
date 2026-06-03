@@ -5,8 +5,7 @@ class BulletGroup extends Phaser.Physics.Arcade.Group {
         super(scene.physics.world, scene, {
             key: "sprite_bullet",
             classType: Bullet,
-            // quantity: 20,
-            max: 20
+            quantity: -1
         });
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -16,8 +15,12 @@ class BulletGroup extends Phaser.Physics.Arcade.Group {
                 bullet.body.stop();
             }
         });
-        scene.physics.add.collider(this, enemyGroup, (bullets, enemies) => {
-
+        scene.physics.add.collider(this, enemyGroup, (bullet, enemy) => {
+            if (bullet.active) {
+                this.killAndHide(bullet);
+                bullet.body.stop();
+                enemyGroup.killAndHide(enemy);
+            }
         });
     }
 }

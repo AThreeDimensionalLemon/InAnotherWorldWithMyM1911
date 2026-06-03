@@ -46,9 +46,11 @@ class Castle extends Phaser.Scene {
         }
 
         //create moving elements
-        this.enemyGroup = new EnemyGroup(this);
         this.player = new Player(this, 512, 640);
+        this.enemyGroup = new EnemyGroup(this, this.player);
         this.bulletGroup = new BulletGroup(this, this.enemyGroup);
+        this.tempEnemy = this.enemyGroup.get(512, 600, "sprite_enemy");
+        console.log(this.enemyGroup, this.bulletGroup);
 
         //setup collisions
         this.addColliderWithMap(this.player);
