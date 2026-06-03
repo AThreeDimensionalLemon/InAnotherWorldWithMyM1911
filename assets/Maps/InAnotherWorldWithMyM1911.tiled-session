@@ -8,11 +8,11 @@
             "scaleInEditor": 2
         },
         "Castle.tmx": {
-            "scale": 5.5,
+            "scale": 0.75,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 332.0909090909091,
-                "y": 301.27272727272725
+                "x": 446,
+                "y": 413.3333333333333
             }
         },
         "Castle.tmx#spritesheet_maps": {
