@@ -3,8 +3,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         //setup parent class
         super(scene, x, y, "sprite_player");
-        scene.add.existing(this); //beginning to see why Quincy calls Phaser "inconsistently low-level"
+        scene.add.existing(this);
         scene.physics.add.existing(this);
+        scene.addColliderWithMap(this);
 
         //read configs
         //TODO: Make this object read from a JSON

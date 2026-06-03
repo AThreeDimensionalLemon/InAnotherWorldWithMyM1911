@@ -45,8 +45,10 @@ class Castle extends Phaser.Scene {
             if (layer.name.includes("collidable")) this.map.layers[layer.name].setCollisionByProperty({ collides: true });
         }
 
-        //create moving elements
+        //create player
         this.player = new Player(this, 512, 640);
+
+        //create enemy group
         let enemySpawns = [];
         for (const layer in this.map.layers) {
             this.map.layers[layer].forEachTile((tile) => {
@@ -57,11 +59,35 @@ class Castle extends Phaser.Scene {
             });
         }
         this.enemyGroup = new EnemyGroup(this, this.player, enemySpawns, this.map.tilemap);
-        this.bulletGroup = new BulletGroup(this, this.enemyGroup);
         this.tempEnemy = this.enemyGroup.get(512, 600, "sprite_enemy");
 
+        //create enemy spawning architecture
+        this.pathfinderGrid = [];
+        for (let x = 0; x < this.map.tilemap.height; x++) {
+            this.pathfinderGrid.push([]);
+            for (let y = 0; y < this.map.tilemap.width; y++) {
+                this.pathfinderGrid[x].push(0);
+            }
+        }
+        for (let y = 0; y < this.map.tilemap.height; y++) {
+            for (let x = 0; x < this.map.tilemap.width; x++) {
+                for (const layer of this.map.tilemap.layers) {
+                    const tile = layer.tilemapLayer.getTileAt(x, y);
+                    if (tile != null) this.pathfinderGrid[y][x] = tile.index - 1;
+                }
+            }
+        }
+        this.pathfinderFilter = [];
+        this.pathfinderFilter.push(1228, 1229, 1230, 1285, 1286, 1287, 1342, 1343, 1344); //stone floor tiles
+        this.pathfinderFilter.push(1235, 1236, 1237, 1292, 1293, 1294, 1349, 1350, 1351); //wood floor tiles
+        this.pathfinderFilter.push(1055, 1056, 1062, 1063); //both types of spawn points
+        this.pathfinderFilter.push(1611, 1612, 1613, 1668, 1669, 1670, 1725, 1726, 1727); //bordered carpet tiles
+        this.pathfinderFilter.push(1643, 1644, 1645, 1700, 1701, 1702, 1757, 1758, 1759); //smaller carpet tiles
+
+        //create bullet group
+        this.bulletGroup = new BulletGroup(this, this.enemyGroup);
+
         //setup collisions
-        this.addColliderWithMap(this.player);
 
         //setup camera
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
