@@ -47,7 +47,16 @@ class Castle extends Phaser.Scene {
 
         //create moving elements
         this.player = new Player(this, 512, 640);
-        this.enemyGroup = new EnemyGroup(this, this.player);
+        let enemySpawns = [];
+        for (const layer in this.map.layers) {
+            this.map.layers[layer].forEachTile((tile) => {
+                if (tile.properties.spawns) enemySpawns.push({
+                    x: tile.pixelX + tile.width / 2,
+                    y: tile.pixelY + tile.height / 2
+                });
+            });
+        }
+        this.enemyGroup = new EnemyGroup(this, this.player, enemySpawns);
         this.bulletGroup = new BulletGroup(this, this.enemyGroup);
         this.tempEnemy = this.enemyGroup.get(512, 600, "sprite_enemy");
 

@@ -1,5 +1,5 @@
 class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
-    constructor(scene, player) {
+    constructor(scene, player, inSpawns) {
 
         //setup parent class
         super(scene.physics.world, scene, {
@@ -21,7 +21,8 @@ class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
             difficultyInterval: 30000
         }
 
-        //gameplay variabless
+        //gameplay variables
+        this.spawns = inSpawns
         this.difficulty = 1;
     }
 
