@@ -1,6 +1,3 @@
-//Note to self: Never use Phaser groups unless absolutely necessary
-//They barely have any functionality more than a regular array and some boolean flags
-//The only reason I'm using one here is because I started using one and don't want to rearchitect the entire game
 class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
     constructor(scene, player) {
 
@@ -12,7 +9,7 @@ class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
         });
         scene.add.existing(this);
         scene.physics.add.existing(this);
-        scene.physics.add.collider(this, player, (enemy, player) => {
+        scene.physics.add.collider(this, player, (player, enemy) => { //TODO: Figure out what determines which object is the first argument
             if (enemy.active) {
                 console.log("enemy attacked the player");
             }
