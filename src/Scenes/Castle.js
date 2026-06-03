@@ -56,7 +56,7 @@ class Castle extends Phaser.Scene {
                 });
             });
         }
-        this.enemyGroup = new EnemyGroup(this, this.player, enemySpawns);
+        this.enemyGroup = new EnemyGroup(this, this.player, enemySpawns, this.map.tilemap);
         this.bulletGroup = new BulletGroup(this, this.enemyGroup);
         this.tempEnemy = this.enemyGroup.get(512, 600, "sprite_enemy");
 
