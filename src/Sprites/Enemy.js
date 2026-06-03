@@ -5,4 +5,16 @@ class Enemy extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture);
         scene.add.existing(this);
     }
+
+    start() {
+        this.active = true;
+        this.visible = true;
+        this.body.checkCollision.none = false;
+    }
+
+    stop() {
+        this.active = false;
+        this.visible = false;
+        this.body.checkCollision.none = true;
+    }
 }

@@ -11,15 +11,13 @@ class BulletGroup extends Phaser.Physics.Arcade.Group {
         scene.physics.add.existing(this);
         scene.addColliderWithMap(this, (bullet, wall) => {
             if (bullet.active) {
-                this.killAndHide(bullet);
-                bullet.body.stop();
+                bullet.stop();
             }
         });
         scene.physics.add.collider(this, enemyGroup, (bullet, enemy) => {
             if (bullet.active) {
-                this.killAndHide(bullet);
-                bullet.body.stop();
-                enemyGroup.killAndHide(enemy);
+                bullet.stop();
+                enemy.stop();
             }
         });
     }

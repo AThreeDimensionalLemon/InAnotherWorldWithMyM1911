@@ -17,6 +17,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.inputs = scene.input.keyboard.addKeys("W,A,S,D,UP,LEFT,RIGHT,DOWN");
 
         //gameplay variables
+        //TODO: Add damage cooldown
         this.shootCooldown = 0;
     }
 

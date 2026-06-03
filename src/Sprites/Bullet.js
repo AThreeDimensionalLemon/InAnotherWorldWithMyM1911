@@ -14,9 +14,17 @@ class Bullet extends Phaser.Physics.Arcade.Sprite {
     }
 
     start(xDirection, yDirection) {
-        this.setActive(true);
-        this.setVisible(true);
-        this.setRotation(Math.atan(xDirection / yDirection)); //TODO: Fix this facing the wrong direction when going diagonal
+        this.active = true;
+        this.visible = true;
         this.body.setVelocity(xDirection * this.configs.moveSpeed, yDirection * this.configs.moveSpeed);
+        this.body.checkCollision.none = false;
+        this.setRotation(Math.atan(xDirection / yDirection)); //TODO: Fix this facing the wrong direction when going diagonal
+    }
+
+    stop() {
+        this.active = false;
+        this.visible = false;
+        this.body.stop();
+        this.body.checkCollision.none = true;
     }
 }
