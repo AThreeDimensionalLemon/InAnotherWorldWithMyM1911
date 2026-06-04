@@ -38,8 +38,9 @@ class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
         //spawning
         if (this.spawnCooldown <= 0) {
             const targetSpawn = this.spawns[Math.floor(Math.random() * this.spawns.length)];
-            this.get(targetSpawn.x, targetSpawn.y, "sprite_enemy");
-            console.log(`spawn enemy at (${targetSpawn.x}, ${targetSpawn.y})`)
+            const enemy = this.get(targetSpawn.x, targetSpawn.y, "sprite_enemy");
+            enemy.start();
+            console.log(`spawn enemy at (${targetSpawn.x}, ${targetSpawn.y})`);
             this.spawnCooldown = this.configs.spawnInterval;
         }
     }
