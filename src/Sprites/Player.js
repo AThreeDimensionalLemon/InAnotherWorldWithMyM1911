@@ -49,7 +49,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         //update variables
         if (this.shootCooldown > 0) this.shootCooldown -= delta;
         if (this.damageCooldown > 0) this.damageCooldown -= delta;
-        if (this.health <= 0) console.log("die");
+        if (this.health <= 0) this.scene.scene.start("death");
 
         //poll and handle inputs
         const moveDirection = this.getDirection(this.inputs.A.isDown, this.inputs.D.isDown, this.inputs.W.isDown, this.inputs.S.isDown);
