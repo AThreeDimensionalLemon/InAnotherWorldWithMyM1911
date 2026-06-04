@@ -89,8 +89,7 @@ class Castle extends Phaser.Scene {
         //create bullet group
         this.bulletGroup = new BulletGroup(this, this.enemyGroup);
 
-        //debugging
-        this.tempEnemy = this.enemyGroup.get(512, 600, "sprite_enemy");
+        // this.tempEnemy = this.enemyGroup.get(512, 600, "sprite_enemy");
 
         //setup camera
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
@@ -98,7 +97,7 @@ class Castle extends Phaser.Scene {
     }
 
     update(time, delta) {
-        this.enemyGroup.update(time);
+        this.enemyGroup.update(time, delta);
         this.player.update(delta, this.bulletGroup);
     }
 }
