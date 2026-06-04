@@ -82,6 +82,9 @@ class Castle extends Phaser.Scene {
         this.pathfinderFilter.push(1055, 1056, 1062, 1063); //both types of spawn points
         this.pathfinderFilter.push(1611, 1612, 1613, 1668, 1669, 1670, 1725, 1726, 1727); //bordered carpet tiles
         this.pathfinderFilter.push(1643, 1644, 1645, 1700, 1701, 1702, 1757, 1758, 1759); //smaller carpet tiles
+        this.pathfinderFilter.push(882, 883, 885, 940, 942, 999, 1006); //stair tiles
+        this.pathfinderFilter.push(711, 712, 718, 719, 720, 768, 772, 777, 781, 832); //secret hallway tiles
+        this.pathfinderFilter.push(1110, 1167); //pillars
 
         //create bullet group
         this.bulletGroup = new BulletGroup(this, this.enemyGroup);
