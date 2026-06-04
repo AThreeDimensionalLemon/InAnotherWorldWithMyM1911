@@ -17,5 +17,5 @@ const game = new Phaser.Game({
         mode: Phaser.Scale.ScaleModes.FIT,
         autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY
     },
-    scene: [ Castle, Death ]
+    scene: [ Title, Castle, Death ]
 });
