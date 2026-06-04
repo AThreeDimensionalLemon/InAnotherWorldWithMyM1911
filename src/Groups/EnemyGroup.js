@@ -11,8 +11,8 @@ class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
         scene.add.existing(this);
         scene.physics.add.existing(this);
         scene.physics.add.collider(this, player, (player, enemy) => { //TODO: Figure out what determines which object is the first argument
-            if (enemy.active) {
-                console.log("player takes damage");
+            if (enemy.active && player.damageCooldown <= 0) {
+                player.hurt();
             }
         });
 
