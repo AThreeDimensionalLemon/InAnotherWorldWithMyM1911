@@ -7,6 +7,7 @@ class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
             classType: Enemy,
             quantity: -1
         });
+        this.runChildUpdate = true;
         scene.add.existing(this);
         scene.physics.add.existing(this);
         scene.physics.add.collider(this, player, (player, enemy) => { //TODO: Figure out what determines which object is the first argument

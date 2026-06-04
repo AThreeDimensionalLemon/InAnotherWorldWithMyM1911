@@ -1,5 +1,5 @@
 {
-    "activeFile": "Castle.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -8,11 +8,11 @@
             "scaleInEditor": 2
         },
         "Castle.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "scale": 3,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 446,
-                "y": 413.3333333333333
+                "x": 191.5,
+                "y": 463.66666666666663
             }
         },
         "Castle.tmx#spritesheet_maps": {
