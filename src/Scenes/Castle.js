@@ -1,6 +1,6 @@
 class Castle extends Phaser.Scene {
     constructor() {
-        super("Castle");
+        super("castle");
     }
 
     addColliderWithMap(object, callback) {
