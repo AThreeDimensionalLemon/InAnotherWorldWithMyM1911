@@ -33,6 +33,15 @@ class Castle extends Phaser.Scene {
         this.load.image("sprite_enemy");
         this.load.image("sprite_player");
         this.load.image("sprite_bullet");
+
+        //queue to-be-loaded ui assets
+        this.load.setPath("./assets/Ui/");
+        this.load.image("sprite_healthEmpty_3.png");
+        this.load.image("sprite_healthEmpty_2.png");
+        this.load.image("sprite_healthEmpty_1.png");
+        this.load.image("sprite_healthFull_3.png");
+        this.load.image("sprite_healthFull_2.png");
+        this.load.image("sprite_healthFull_1.png");
     }
 
     create() {
