@@ -23,6 +23,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.damageCooldown = 0;
         this.health = this.configs.maxHealth;
         this.shootCooldown = 0;
+
+        console.log(this);
     }
 
     //returns direction of action for moving and shooting
