@@ -18,6 +18,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         //setup architecture
         this.inputs = scene.input.keyboard.addKeys("W,A,S,D,UP,LEFT,RIGHT,DOWN");
+        this.healthUi = new PlayUi(scene);
 
         //gameplay variables
         this.damageCooldown = 0;
@@ -44,6 +45,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     hurt() {
         this.health--;
         this.damageCooldown = this.configs.damageCooldown;
+        this.healthUi.swapHealthbarSegment(this.health);
     }
 
     update(delta, bulletGroup) {

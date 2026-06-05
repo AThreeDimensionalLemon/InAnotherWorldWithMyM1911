@@ -36,4 +36,8 @@ class PlayUi {
             }
         }
     }
+
+    swapHealthbarSegment(index) {
+        this.healthBar.filled[index].visible = false;
+    }
 }
