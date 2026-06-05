@@ -11,12 +11,12 @@ class Title extends Phaser.Scene {
         this.title.x = game.config.width / 2 - this.title.width / 2;
         this.title.y = game.config.height * (3 / 8) - this.title.height / 2;
 
-        this.instructions = this.add.text(0, 0, "Press SPACE to start", {
-            fontSize: 24,
+        this.instructions = this.add.text(0, 0, "Use WASD to move\nand arrow keys to shoot\nPress SPACE to start", {
+            fontSize: 18,
             align: "center"
         });
         this.instructions.x = game.config.width / 2 - this.instructions.width / 2;
-        this.instructions.y = game.config.height * (7 / 8) - this.title.height / 2;
+        this.instructions.y = game.config.height * (13 / 16) - this.title.height / 2;
 
         this.credits = this.add.text(0, 0, "By AThreeDimensionalLemon", {
             fontSize: 12,
