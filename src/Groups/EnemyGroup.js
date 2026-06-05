@@ -19,8 +19,8 @@ class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
         //read configs
         //TODO: Make this object read from a JSON
         this.configs = {
-            difficultyInterval: 30000,
-            spawnInterval: 1000
+            difficultyInterval: 15000,
+            spawnInterval: 2500
         }
 
         //gameplay variables
@@ -37,9 +37,11 @@ class EnemyGroup extends Phaser.Physics.Arcade.StaticGroup {
 
         //spawning
         if (this.spawnCooldown <= 0) {
-            const targetSpawn = this.spawns[Math.floor(Math.random() * this.spawns.length)];
-            const enemy = this.get(targetSpawn.x, targetSpawn.y, "sprite_enemy");
-            enemy.start();
+            for (let i = 0; i < this.difficulty; i++) {
+                const targetSpawn = this.spawns[Math.floor(Math.random() * this.spawns.length)];
+                const enemy = this.get(targetSpawn.x, targetSpawn.y, "sprite_enemy");
+                enemy.start();
+            }
             this.spawnCooldown = this.configs.spawnInterval;
         }
     }
